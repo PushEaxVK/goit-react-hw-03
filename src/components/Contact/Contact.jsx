@@ -1,6 +1,12 @@
 import css from './Contact.module.css';
 
-const Contact = () => {
-  return <div></div>;
+const Contact = ({ contact }) => {
+  return (
+    <div>
+      <p>{contact.name}</p>
+      <p>{contact.number}</p>
+      <button>Delete</button>
+    </div>
+  );
 };
 export default Contact;

@@ -44,10 +44,12 @@ function App() {
       <h1>Phonebook</h1>
       <ContactForm handleAddContact={handleAddContact} />
       <SearchBox query={query} setQuery={setQuery} />
-      <ContactList
-        list={filteredContacts}
-        handleRemoveContact={handleRemoveContact}
-      />
+      {filteredContacts.length > 0 && (
+        <ContactList
+          list={filteredContacts}
+          handleRemoveContact={handleRemoveContact}
+        />
+      )}
     </div>
   );
 }

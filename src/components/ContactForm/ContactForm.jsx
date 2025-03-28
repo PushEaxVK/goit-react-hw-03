@@ -43,13 +43,13 @@ const ContactForm = ({ handleAddContact }) => {
           <label htmlFor={nameFieldId}>Name</label>
           <Field type="text" name="name" id={nameFieldId} />
 
-          <ErrorMessage name="name" component="span" />
+          <ErrorMessage name="name" component="span" className={css.error} />
         </div>
         <div className={css.fieldBox}>
           <label htmlFor={numberFieldId}>Number</label>
           <Field type="text" name="number" id={numberFieldId} />
 
-          <ErrorMessage name="number" component="span" />
+          <ErrorMessage name="number" component="span" className={css.error} />
         </div>
         <button type="submit" className={css.sendButton}>
           Add contact

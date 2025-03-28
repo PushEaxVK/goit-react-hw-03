@@ -18,3 +18,7 @@
   width: 33%;
   align-self: center;
 }
+
+.error {
+  color: red;
+}

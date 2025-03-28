@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './App.css';
+import css from './App.module.css';
 import ContactForm from './components/ContactForm/ContactForm';
 import ContactList from './components/ContactList/ContactList';
 import SearchBox from './components/SearchBox/SearchBox';
@@ -11,13 +11,33 @@ function App() {
     { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]);
+  const [query, setQuery] = useState('');
+
+  const handleAddContact = (contact) => {
+    setContacts((prev) => {
+      return [...prev, contact];
+    });
+  };
+
+  const handleRemoveContact = (contactId) => {
+    setContacts((prev) => {
+      return prev.filter((contact) => contact.id !== contactId);
+    });
+  };
+
+  const filteredContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(query.toLowerCase())
+  );
 
   return (
-    <div>
+    <div className={css.app}>
       <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList list={contacts} />
+      <ContactForm handleAddContact={handleAddContact} />
+      <SearchBox query={query} setQuery={setQuery} />
+      <ContactList
+        list={filteredContacts}
+        handleRemoveContact={handleRemoveContact}
+      />
     </div>
   );
 }
